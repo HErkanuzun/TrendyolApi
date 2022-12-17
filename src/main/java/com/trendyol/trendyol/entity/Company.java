@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString
@@ -32,10 +33,48 @@ public class Company {
     @Column(name = "rate")
     private float rate;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Product> products;
+    @OneToMany(mappedBy = "company",cascade = CascadeType.ALL)
+    private Set<Product> productList;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<User> Users;
+    public Company(Long id, String name, Set<Product> productsList,String address, Float rate){
+        this.id = id;
+        this.name = name;
+        this.address= address;
+        this.rate = rate;
+    }
 
+    public Company(){
+
+    }
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id=id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(Set<Product> productList) {
+        this.productList = productList;
+    }
 }

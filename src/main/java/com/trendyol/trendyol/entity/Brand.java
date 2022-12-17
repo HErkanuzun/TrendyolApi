@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -18,8 +20,8 @@ public class Brand {
     @Column (name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Product> products;
+    @OneToMany(mappedBy = "brand",cascade = CascadeType.ALL)
+    private Set<Product> productList;
 
     // Getters and setters for the fields go here
 }

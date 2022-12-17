@@ -45,8 +45,12 @@ public class Product {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Order> order;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    //@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //private List<Order> order;
 
     // Getters and setters for the fields go here
 }

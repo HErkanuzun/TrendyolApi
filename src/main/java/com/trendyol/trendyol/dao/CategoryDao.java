@@ -5,12 +5,12 @@ import com.trendyol.trendyol.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CategoryDao {
-    @Autowired
 
     private ICategoryRepository categoryRepository;
-
     public CategoryDao(ICategoryRepository categoryRepository){
         this.categoryRepository = categoryRepository;
     }
@@ -19,11 +19,9 @@ public class CategoryDao {
 
     }
 
-
     public void create(Category category){
         categoryRepository.save(category);
     }
-
 
     public void update(Category category){
         categoryRepository.save(category);
@@ -35,7 +33,11 @@ public class CategoryDao {
     }
 
     public String getCategoryById(Long id){
-        return "silindi";
+        return "Category Silindi";
+    }
+
+    public List<Category> getAllCategory(){
+        return categoryRepository.findAll();
     }
 
 
